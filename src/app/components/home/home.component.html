@@ -1,13 +1,8 @@
-<div class="p-4 rounded bg-gray-300">
-  <mat-form-field>
-    <mat-label>Search</mat-label>
-    <input matInput type="text" [(ngModel)]="search">
-    <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <mat-divider></mat-divider>
-  <div class="mt-4">
-    <button mat-raised-button matBadge="10" color="accent">Initiate</button>
-  </div>
+<div class="flex">
+  <section>
+    <app-hero-form (newHeroEvent)="addHero($event)"></app-hero-form>
+  </section>
+  <section class="ml-8">
+    <app-hero-list [heroes]="heroes"></app-hero-list>
+  </section>
 </div>

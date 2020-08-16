@@ -10,8 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+
+import { HeroFormComponent } from './hero-form/hero-form.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
 
 const MODULES = [
+  // Angular modules
   CommonModule,
   FormsModule,
   // Material modules
@@ -22,12 +27,13 @@ const MODULES = [
   MatIconModule,
   MatDividerModule,
   MatBadgeModule,
-  MatSelectModule
+  MatSelectModule,
+  MatListModule,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [HeroFormComponent, HeroListComponent],
   imports: MODULES,
-  exports: MODULES
+  exports: [...MODULES, HeroFormComponent, HeroListComponent],
 })
 export class ShareModule {}

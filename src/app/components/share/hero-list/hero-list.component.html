@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let hero of heroes" class="mb-6 w-64">
+    <mat-card [matBadge]="hero.id">
+      <mat-card-header>
+        <mat-card-title>{{ hero.name }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.alterEgo }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Super power: {{ hero.power }}</p>
+      </mat-card-content>
+    </mat-card>
+  </li>
+</ul>
