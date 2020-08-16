@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
 
 const MODULES = [
   CommonModule,
@@ -20,7 +21,8 @@ const MODULES = [
   MatInputModule,
   MatIconModule,
   MatDividerModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatSelectModule
 ];
 
 @NgModule({

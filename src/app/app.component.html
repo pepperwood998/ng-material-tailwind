@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<main [class]='theme'>
+  <div class="flex flex-col items-center justify-center mt-8 p-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Theme</mat-label>
+      <mat-select [(ngModel)]="theme">
+        <mat-option value="my-theme">My Theme</mat-option>
+        <mat-option value="my-second-theme">My Second Theme</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <router-outlet></router-outlet>
+  </div>
+</main>
