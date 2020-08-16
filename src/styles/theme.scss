@@ -17,7 +17,7 @@ $my-theme-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as `color` or `typography`.
-$my-app-theme: mat-dark-theme(
+$my-app-theme: mat-light-theme(
   (
     color: (
       primary: $my-theme-primary,
@@ -31,7 +31,7 @@ $my-second-theme-primary: mat-palette($mat-purple);
 $my-second-theme-accent: mat-palette($mat-pink);
 $my-second-theme-warn: mat-palette($mat-red);
 
-$my-app-second-theme: mat-dark-theme(
+$my-app-second-theme: mat-light-theme(
   (
     color: (
       primary: $my-second-theme-primary,
