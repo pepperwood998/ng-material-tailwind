@@ -1,14 +1,14 @@
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild,
-} from '@angular/core';
-import { NgForm } from '@angular/forms';
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+  NgForm,
+} from '@angular/forms';
 
-import { HeroForm } from '../../../models/hero';
 import { POWERS } from '../../../constants';
+import { HeroForm } from '../../../models/hero';
 
 @Component({
   selector: 'app-hero-form',
@@ -17,40 +17,39 @@ import { POWERS } from '../../../constants';
 })
 export class HeroFormComponent implements OnInit {
   powers = POWERS;
-  submitted = false;
-  error = false;
-
-  name = '';
-  alterEgo = '';
-  power = '';
+  heroForm: FormGroup;
   @Output() newHeroEvent = new EventEmitter<HeroForm>();
 
-  onSubmit(heroForm: NgForm): void {
-    if (!this.name || !this.power) {
-      this.error = true;
-      return;
-    }
+  constructor(private formBuilder: FormBuilder) {}
 
-    this.newHeroEvent.emit({
-      name: this.name,
-      alterEgo: this.alterEgo,
-      power: this.power,
+  ngOnInit(): void {
+    this.heroForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      alterEgo: '',
+      power: ['', [Validators.required]],
     });
-    heroForm.resetForm();
-    this.error = false;
-    this.submitted = true;
+  }
+
+  onSubmit(ngHeroForm: NgForm): void {
+    this.newHeroEvent.emit(this.heroForm.value);
+    this.heroForm.reset();
+    ngHeroForm.resetForm();
+  }
+
+  get name(): FormControl {
+    return this.heroForm.get('name') as FormControl;
+  }
+
+  get alterEgo(): FormControl {
+    return this.heroForm.get('alterEgo') as FormControl;
+  }
+
+  get power(): FormControl {
+    return this.heroForm.get('power') as FormControl;
   }
 
   // TODO: Remove this when we're done
   get diagnostic(): string {
-    return JSON.stringify({
-      name: this.name,
-      alterEgo: this.alterEgo,
-      power: this.power,
-    });
+    return JSON.stringify(this.heroForm.value);
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

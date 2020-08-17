@@ -1,33 +1,32 @@
 <div class="p-4 rounded bg-gray-200">
   <h2 class='text-primary'>Hero Form</h2>
-  <form #heroForm="ngForm" (ngSubmit)="onSubmit(heroForm)" class="flex flex-col">
+  <form [formGroup]="heroForm" #ngHeroForm="ngForm" (ngSubmit)="onSubmit(ngHeroForm)" class="flex flex-col">
     <section class="mb-2">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Name</mat-label>
-        <input [(ngModel)]="name" name="name" matInput required placeholder="Hero name">
-        <mat-error *ngIf="error">Missing</mat-error>
+        <input matInput formControlName="name" required placeholder="Hero name">
+        <mat-error *ngIf="name.invalid && name.touched">Name is required</mat-error>
       </mat-form-field>
     </section>
     <section class="mb-2">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Alter Ego</mat-label>
-        <input [(ngModel)]="alterEgo" name="alterEgo" matInput placeholder="Hero alter ego">
-        <mat-hint>Hint</mat-hint>
+        <input matInput formControlName="alterEgo" placeholder="Hero alter ego">
       </mat-form-field>
     </section>
     <section class="mb-2">
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Hero Power</mat-label>
-        <mat-select [(ngModel)]="power" name="power" required>
-          <mat-option *ngFor="let power of powers" [value]="power">
-            {{ power }}
+        <mat-label>Choose Power</mat-label>
+        <mat-select formControlName="power" required>
+          <mat-option *ngFor="let item of powers" [value]="item">
+            {{ item }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="error">Missing</mat-error>
+        <mat-error *ngIf="power.invalid && power.touched">Please select a power</mat-error>
       </mat-form-field>
     </section>
     <section class="self-end">
-      <button type="submit" mat-raised-button color='primary'>Submit</button>
+      <button mat-raised-button [disabled]="heroForm.invalid" color='primary'>Submit</button>
     </section>
   </form>
 </div>

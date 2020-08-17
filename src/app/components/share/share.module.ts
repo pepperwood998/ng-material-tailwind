@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +19,7 @@ const MODULES = [
   // Angular modules
   CommonModule,
   FormsModule,
+  ReactiveFormsModule,
   // Material modules
   MatButtonModule,
   MatCardModule,
